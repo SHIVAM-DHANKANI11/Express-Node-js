@@ -1,0 +1,828 @@
+/* h1{
+    text-align: center;
+    color:red;
+}
+
+h2{
+    text-align:center;
+    color:black;
+    background-color:aqua;
+}
+
+.hero{
+    background-image: linear-gradient(black,black);
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    
+}
+.hero-text{
+    text-align: center;
+} */
+/* 1. Hero Container */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* Better than min-height for hero sections */
+  overflow: hidden; /* Important for the zoom effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* Fallback color */
+}
+
+/* 2. Dynamic Background Image & Overlay */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  /* Dynamic Zoom Animation */
+  animation: slowZoom 20s infinite alternate;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+}
+
+/* 3. Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+  /* Entrance Animation */
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+}
+
+.text-highlight {
+  color: #0d6efd; /* Brand Blue */
+}
+
+/* 4. Dynamic Button */
+.btn-car {
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: #0d6efd;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+}
+
+.btn-car:hover {
+  transform: translateY(-3px);
+  background: #0b5ed7;
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.6);
+}
+
+/* --- Animations --- */
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.btn-car {
+  background-color: rgb(105, 64, 73);
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.btn-car:hover {
+  background-color: #009acd;
+}
+
+.btn-car:active {
+  transform: scale(0.95);
+}
+/* Container & Layout Tweaks */
+.vertical-service-list {
+  position: relative;
+  padding-left: 0.5rem;
+}
+
+/* Vertical Accent Line Effect */
+.vertical-service-list .border-start {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-color: #dee2e6 !important; /* Soft grey by default */
+  cursor: pointer;
+}
+
+/* Change color and "thicken" the line on hover */
+.vertical-service-list .border-start:hover {
+  border-color: #0d6efd !important; /* Bootstrap primary blue */
+  background-color: rgba(13, 110, 253, 0.03); /* Very subtle highlight */
+  padding-left: 2rem !important; /* "Pushes" the text inward slightly */
+}
+
+/* Typography Enhancements */
+.vertical-service-list h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.vertical-service-list .border-start:hover h4 {
+  color: #0d6efd;
+}
+
+.vertical-service-list p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Image Styling */
+.sticky-lg-top img {
+  transition: transform 0.5s ease;
+}
+
+/* Subtle image lift when hovering the section */
+section:hover .sticky-lg-top img {
+  transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .sticky-lg-top {
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 3rem;
+  }
+}
+/* 1. The Background Bridge */
+.about-section {
+  background: #0b0b0b; /* Deep charcoal (matches the Hero bottom) */
+  color: #ffffff;
+  padding: 100px 0;
+  position: relative;
+}
+
+/* 2. Section Title */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+/* 3. The Vertical Service Items (Animated) */
+.service-item {
+  position: relative;
+  padding-left: 25px;
+  border-left: 3px solid rgba(13, 110, 253, 0.2); /* Faded blue line */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-item:hover {
+  border-left: 4px solid #0d6efd; /* Electric Blue highlight */
+  padding-left: 35px;
+  transform: translateX(10px);
+}
+
+.service-item h4 {
+  color: #0d6efd; /* Match the Hero highlight */
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 1.4rem;
+}
+
+.service-item p {
+  color: #b0b0b0; /* Light grey for readability */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 4. The "Read More" Dynamic Link */
+.read-more-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.read-more-btn span {
+  transition: transform 0.3s ease;
+}
+
+.read-more-btn:hover {
+  color: #0d6efd;
+}
+
+.read-more-btn:hover span {
+  transform: translateX(8px);
+}
+
+/* 5. The Image Glow Effect */
+.about-img-container {
+  position: relative;
+}
+
+.about-img-container::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 100px;
+  height: 100px;
+  border-top: 5px solid #0d6efd;
+  border-left: 5px solid #0d6efd;
+  z-index: 0;
+}
+
+.about-img-container img {
+  position: relative;
+  z-index: 1;
+  filter: grayscale(20%) contrast(110%);
+  transition: all 0.5s ease;
+}
+
+.about-img-container:hover img {
+  filter: grayscale(0%) contrast(100%);
+  box-shadow: 0 0 30px rgba(13, 110, 253, 0.3);
+}
+
+/* 1. Section Background */
+.services-section {
+  background: #0b0b0b; /* Match the About section */
+  padding-bottom: 100px;
+}
+
+/* 2. The Service Card */
+.service-card {
+  background: #1a1a1a; /* Slightly lighter than the background to pop */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(13, 110, 253, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(13, 110, 253, 0.2);
+}
+
+/* 3. Image & Overlay */
+.card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.service-card:hover .card-img-wrapper img {
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(26, 26, 26, 1), rgba(26, 26, 26, 0));
+  opacity: 0.8;
+}
+
+/* 4. Card Content */
+.service-card .card-body {
+  padding: 1.5rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.service-card .card-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .card-title {
+  color: #0d6efd; /* Turns blue on hover */
+}
+
+/* 5. The Animated Accent Line */
+.accent-line {
+  width: 40px;
+  height: 3px;
+  background: #0d6efd;
+  margin: 0 auto;
+  transition: width 0.4s ease;
+}
+
+.service-card:hover .accent-line {
+  width: 80px; /* Line expands on hover */
+}
+
+/* 1. Banner Container */
+.cta-banner {
+  position: relative;
+  padding: 120px 0; /* Slightly more padding for a more "heroic" feel */
+  background-image: url('/images/bg_banner.jpg'); /* Your specific image added here */
+  background-attachment: fixed; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  /* Ensuring the container stays dark while the image loads */
+  background-color: #000; 
+}
+
+/* 2. Dark Gradient Overlay */
+.cta-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Using a gradient instead of a solid color for a more cinematic look */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 1;
+}
+
+/* 3. The Glassmorphism Content Box */
+.cta-box {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.03); /* Kept ultra-subtle */
+  backdrop-filter: blur(12px); /* Increased blur slightly for better contrast */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px; /* Slightly rounder for a modern look */
+  padding: 80px 60px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.cta-box:hover {
+  transform: scale(1.01); /* Very subtle "pop" on the whole box */
+}
+
+/* 4. Typography & Accents */
+.cta-title {
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size */
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.cta-text {
+  color: #c4c4c4;
+  font-size: 1.15rem;
+  max-width: 550px;
+  line-height: 1.6;
+}
+
+/* 5. Buttons */
+.cta-actions .btn {
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border: none;
+  color: white;
+}
+
+/* 6. Responsive Adjustments */
+@media (max-width: 991px) {
+  .cta-banner {
+    background-attachment: scroll; /* Fixes "jumping" backgrounds on mobile Safari */
+    padding: 80px 0;
+  }
+  .cta-box {
+    padding: 40px 25px;
+    margin: 0 15px;
+  }
+}
+/* 1. Base Navbar Styling */
+.custom-nav {
+  padding: 20px 0;
+  transition: all 0.4s ease;
+  background: transparent; /* Starts transparent */
+  backdrop-filter: blur(0px);
+}
+
+/* 2. Style when scrolling (Add this class via JS or just keep it dark) */
+.navbar.scrolled {
+  background: rgba(11, 11, 11, 0.95) !important;
+  padding: 12px 0;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(13, 110, 253, 0.2);
+}
+
+/* 3. Brand & Links */
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin: 0 15px;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* 4. The Electric Blue Underline */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0d6efd;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
+
+/* 5. Mobile Adjustments */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: #0b0b0b;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+}
+
+/* 1. Team Section Background */
+.team-section {
+  background: #0b0b0b;
+  padding: 80px 0;
+}
+
+/* 2. The 3D Card */
+.employee-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.employee-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  border-color: #0d6efd;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(13, 110, 253, 0.2);
+}
+
+/* 3. Image Styling with 'Blue Light' Overlay */
+.employee-img-wrapper {
+  position: relative;
+  height: 350px; /* Fixed height for consistency */
+  overflow: hidden;
+}
+
+.employee-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.employee-card:hover .employee-img {
+  transform: scale(1.1);
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #0b0b0b 0%, transparent 40%);
+}
+
+/* 4. Text Content */
+.employee-card-body {
+  padding: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.employee-name {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.employee-role {
+  color: #0d6efd;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+/* Special styling for CEO/Exec Badge */
+.badge.bg-primary {
+  padding: 8px 15px;
+  font-size: 0.7rem;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+}
+
+/* Footer Links & Text Visibility Fix */
+.footer-links .text-muted, 
+.site-footer .text-muted {
+    color: #e0e0e0 !important; /* Off-white text taaki content saaf dikhe */
+    transition: all 0.3s ease;
+}
+
+/* Hover par text blue ho jayega */
+.footer-links a:hover {
+    color: #0d6efd !important; /* Bootstrap Primary Blue */
+    text-decoration: none;
+    padding-left: 8px; /* Subtle movement effect */
+}
+
+/* Contact section ke icons aur text fix */
+.footer .text-primary {
+    color: #0d6efd !important; /* Blue icons */
+}
+
+.footer p.text-muted {
+    color: #cfcfcf !important; /* Address aur Email ke liye bright silver color */
+}
+
+/* Specific Blue Highlight for Headings */
+.footer h5 {
+    color: #ffffff;
+    border-left: 3px solid #0d6efd; /* Heading ke side mein ek choti blue line */
+    padding-left: 10px;
+}
+
+/*Dashboard login*/
+
+/* Body background fallback */
+.admin-login-body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  min-height: 100vh;
+}
+
+/* Gradient animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Scene container */
+.admin-login-scene {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background image */
+.admin-login-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) blur(3px); /* Slightly darker for better text legibility */
+  z-index: 0;
+}
+
+/* Dark overlay */
+.admin-login-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Form container */
+.admin-login-form-wrap {
+  position: relative; /* Changed from absolute to work with Flexbox parent */
+  width: 100%;
+  max-width: 380px;
+  padding: 40px;
+  border-radius: 20px;
+  
+  /* Support for Safari and older browsers */
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.1);
+  
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle glass border */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  z-index: 2;
+
+  animation: fadeSlide 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Entry animation */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title & Subtitle */
+.admin-login-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+}
+
+.admin-login-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30px;
+}
+
+/* Inputs */
+.admin-login-form .form-control {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.admin-login-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.admin-login-form .form-control:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
+  border-color: #00f7ff;
+}
+
+/* Button */
+.admin-login-form .btn {
+  width: 100%;
+  border-radius: 10px;
+  padding: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(45deg, #ff6a00, #ee0979);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.admin-login-form .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(238, 9, 121, 0.3);
+}
+
+.admin-login-form .btn:active {
+  transform: translateY(0);
+}
+
+/* Message box */
+.admin-login-message {
+  text-align: center;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.admin-login-message.success {
+  background: rgba(0, 255, 150, 0.15);
+  color: #00ffcc;
+  border: 1px solid rgba(0, 255, 204, 0.3);
+}
+
+.admin-login-message.error {
+  background: rgba(255, 77, 109, 0.15);
+  color: #ff4d6d;
+  border: 1px solid rgba(255, 77, 109, 0.3);
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .admin-login-form-wrap {
+    width: 85%;
+    padding: 30px 20px;
+  }
+}

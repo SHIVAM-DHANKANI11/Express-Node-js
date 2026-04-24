@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css1/style.css">
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+
+    <title>Home</title>
+</head>
+<body class="site-body">
+  <%- include('partials/navbar')%>
+  <main class="site-main">
+  <section class="container py-5">
+    <h2 class="mb-4">Our Services</h2>
+    <div class="row g-4">
+      <% services.forEach(function(item){ %>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 service-card">
+            <img src="<%= item.image %>" class="card-img-top service-card-img" alt="<%= item.title %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+  </main>
+  <footer class="site-footer">
+    <%- include('partials/footer')%>
+  </footer>
+</body>
+<script src="js/bootstrap.bundle.min.js"></script>
+</html>

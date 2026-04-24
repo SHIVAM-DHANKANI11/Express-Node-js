@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css1/style.css">
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+
+    <title>Home</title>
+</head>
+<body>
+    <%-include('partials/navbar')%>
+    <%-include('partials/hero')%>
+
+    <!-- about -->
+<section class="about-section py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      
+      <div class="col-lg-6">
+        <div class="about-img-container">
+          <img src="/images/about.avif" alt="About Us" class="img-fluid rounded-4 shadow-2xl">
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="section-title">Quality <span class="text-highlight">Services</span></h2>
+        
+        <div class="vertical-service-list">
+          <% about.forEach(function(item){ %>
+            <div class="service-item mb-4">
+              <div class="service-content">
+                <h4><%= item.title %></h4>
+                <p><%= item.description %></p>
+                <a href="/about" class="read-more-btn">
+                  <%= item.link %> <span>→</span>
+                </a>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- sevices -->
+  <section class="services-section py-5">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">Our <span class="text-highlight">Expertise</span></h2>
+    
+    <div class="row g-4">
+      <% services.forEach(function(item){ %>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="service-card h-100">
+            <div class="card-img-wrapper">
+              <img src="<%= item.Image %>" class="card-img-top" alt="<%= item.title %>">
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+              <div class="accent-line"></div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!--team-->
+
+<section class="team-section py-5">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">Our <span class="text-highlight">Expert Team</span></h2>
+    
+    <div class="row g-4 justify-content-center">
+      <% team.forEach(function(item){ %>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="employee-card h-100">
+            <div class="employee-img-wrapper">
+              <img src="<%= item.image %>" class="employee-img" alt="<%= item.name %>">
+              <div class="img-overlay"></div>
+            </div>
+            <div class="employee-card-body text-center">
+              <h5 class="employee-name"><%= item.name %></h5>
+              <p class="employee-role">
+                <% if(/CEO|Chief/i.test(item.role)) { %>
+                  <span class="badge bg-primary text-uppercase"><%= item.role %></span>
+                <% } else { %>
+                  <%= item.role %>
+                <% } %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+
+<section class="reviews-section py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">What Our <span class="text-highlight">Clients Say</span></h2>
+    
+    <div class="row g-4 justify-content-center">
+      <% clients.forEach(function(client){ %>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <div class="review-card h-100 shadow-sm border-0 card">
+            <div class="card-body p-4 text-center">
+              <div class="client-img-wrapper mb-3">
+                <img src="<%= client.image %>" 
+                     class="rounded-circle shadow-sm" 
+                     alt="<%= client.name %>"
+                     style="width: 80px; height: 80px; object-fit: cover; border: 3px solid #fff;">
+              </div>
+
+              <div class="rating mb-2 text-warning">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+
+              <p class="review-text fst-italic text-muted">
+                "<%= client.review %>"
+              </p>
+
+              <hr class="mx-auto w-25">
+
+              <h6 class="client-name fw-bold mb-0 text-uppercase"><%= client.name %></h6>
+              <small class="text-primary">Verified Customer</small>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<main class="content-wrapper">
+    <section>
+        <%-include('partials/banner')%>
+    </section>
+</main>
+
+<footer class="footer bg-dark text-white pt-5 pb-3">
+    <%-include('partials/footer')%>
+</footer>
