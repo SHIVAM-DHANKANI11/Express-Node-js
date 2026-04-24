@@ -4,8 +4,8 @@ const app = express();
 require('dotenv').config();
 
 // Configuration (Ideally move these to a .env file)
-const MONGO_URI = "mongodb://127.0.0.1:27017/carS";
-const PORT = 5000;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/carS";
+const PORT = process.env.PORT || 5000;
 
 // 2. Connect to MongoDB
 mongoose.connect(MONGO_URI)
